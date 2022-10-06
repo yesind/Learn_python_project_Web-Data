@@ -1,9 +1,13 @@
 # created by virtualenv automatically
-AUDI_Q7.csv
-data.csv
 main_s.py
 .DS_Store
 .idea/
+BMW_X7.csv
+
+# My
+*.csv
+referat2.txt
+.DS_Store
 
 # Environments
 .env
@@ -141,7 +145,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
 # My
-DZ2.csv
+*.csv
 referat2.txt
 .DS_Store

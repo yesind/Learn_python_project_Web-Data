@@ -6,8 +6,8 @@ import requests
 
 
 """переменные поиска """
-mark = 'AUDI' # MERCEDES
-model='Q7'  #5ER C_KLASSE
+mark = 'BMW' # MERCEDES
+model='X7'  #5ER C_KLASSE
 year_from = '2021'
 year_to = '2022'
 fuel = 'DIESEL' #GASOLINE / DIESEL
@@ -66,9 +66,10 @@ with open (f'{mark}_{model}.csv', 'w', encoding='UTF-8') as file:
     writer.writerow(
         (
         "Model",
-        "Complectation",
+        "Full name",
         "Price",
         "VIN",
+        "Complectation",
         "Milege",
         "Power",
         "Date",
@@ -76,11 +77,20 @@ with open (f'{mark}_{model}.csv', 'w', encoding='UTF-8') as file:
         )
     )
 
+
 auto_data = response.json()
 car_price_list = []
+
+
 for car in auto_data['offers']:
     #print(car['vehicle_info']['model_info']['code'],car['vehicle_info']['tech_param']['human_name'],car['price_info']['RUR'],car['documents']['vin'],car['state']['mileage'],car['owner_expenses']['transport_tax']['horse_power'],car['additional_info']['update_date'],car['id'])
     car_price_list.append(car['price_info']['RUR'])
+    
+    try:
+        complectation = car['vehicle_info']['complectation']['name']
+    except KeyError:
+        complectation = '----------'
+    
     
     with open (f'{mark}_{model}.csv', 'a', encoding='UTF-8') as file:
         writer = csv.writer(file, delimiter=',')
@@ -90,6 +100,7 @@ for car in auto_data['offers']:
             car['vehicle_info']['tech_param']['human_name'],
             car['price_info']['RUR'],
             car['documents']['vin'],
+            complectation,
             car['state']['mileage'],
             car['owner_expenses']['transport_tax']['horse_power'],
             datetime.datetime.utcfromtimestamp(int(car['additional_info']['creation_date'])/1000),  #update_date
