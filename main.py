@@ -104,5 +104,5 @@ df = pd.read_csv(f'{mark}_{model}.csv', encoding='UTF-8', sep=',')
 print(df["Price"].describe())
 
 
-#plt.hist(car_price_list,bins=10)
-#plt.show()
+plt.hist(car_price_list,bins=10)
+plt.show()
