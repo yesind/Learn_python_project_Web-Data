@@ -103,6 +103,5 @@ print(min(car_price_list),max(car_price_list))
 df = pd.read_csv(f'{mark}_{model}.csv', encoding='UTF-8', sep=',')
 print(df["Price"].describe())
 
-
 plt.hist(car_price_list,bins=10)
 plt.show()
