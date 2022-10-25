@@ -150,3 +150,6 @@ dmypy.json
 *.csv
 referat2.txt
 .DS_Store
+*.jpg
+*.png
+static/
