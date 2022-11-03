@@ -12,22 +12,15 @@
   </head>
   <body>
     
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Марка</label>
+      <h1>{{ mark }}</h1>
+      <h1>{{ model }}</h1>
+      <h1>{{ year_from }}</h1>
+      <h1>{{ year_to }}</h1>
+    
+      <div class="text-center">
+        <h1>График цен</h1>
+        <img src= {{ url_plot }} class="img-fluid" width="600" height="800">
       </div>
-      <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Выберите марку автомобиля</option>
-        <option value="1">AUDI</option>
-        <option value="2">BMW</option>
-        <option value="3">MERCEDES</option>
-      </select>
-    </div>
-
-    <div class="text-center">
-      <h1>График цен</h1>
-      <img src= {{ url_plot }} class="img-fluid" width="600" height="800">
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
