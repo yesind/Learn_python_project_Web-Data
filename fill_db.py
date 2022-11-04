@@ -6,10 +6,11 @@ def get_model():
     for model_car in models:
        save_models(model_car, 4)
        print(model_car)
+    db.session.commit()
+    db.session.close()
 
 def save_models(name, mark_id):
     new_model = Model(name=name, mark_id=mark_id)
     db.session.add(new_model)
-    db.session.commit()
-    db.session.close()
+
 

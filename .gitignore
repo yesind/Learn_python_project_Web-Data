@@ -153,3 +153,5 @@ referat2.txt
 *.jpg
 *.png
 static/
+webapp/config.py
+webapp/config.py

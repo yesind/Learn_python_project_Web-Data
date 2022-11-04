@@ -11,35 +11,14 @@
     <title>Стоимость автомобиля</title>
   </head>
   <body>
-    
-   <!---- <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Марка</label>
-      </div>
-      <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Выберите марку автомобиля</option>
-        {% for mark in marks %}
-        <option>{{mark}}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Модель</label>
-      </div>
-      <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Выберите модель</option>
-        {% for  model in models %}
-        <option>{{model}}</option>
-        {% endfor %}
-      </select>
-    </div> -->
+  
     <div class="container">
       <div class="row">
         <div class="col-5">
           
           <div class="col-md-12">
             <p><h2>Выбор автомобиля для анализа цен</h2></p>
+            
             <form method="POST">
               {{ form.csrf_token}}  
     
@@ -57,22 +36,33 @@
             <p>
               {{ form.year_to.label }}<br>{{ form.year_to() }}
             </p>
+            <div class="form-group">
+              <label for="email">Вид топлива:</label>
+              {{ form.fuel() }}
+             </div>
+             <div class="form-group">
+              <label for="email">Привод:</label>
+              {{ form.gear_type() }}
+             </div>
+             <div class="form-group">
+              <label for="email">Количество владельцев:</label>
+              {{ form.owners_count_group() }}
+             </div>
+
             <p>{{ form.submit }}</p>
-        
-        
+ 
           </form>
+
         </div>
       </div>
     </div>
-
-     
+ 
      <script>
      mark_select = document.getElementById('mark');
      model_select = document.getElementById('model');
-     
       
      mark_select.onchange = function(){
-      mark = mark_select.value;
+     mark = mark_select.value;
       
       fetch('model/' + mark).then(function(response){
        response.json().then(function(data) {
@@ -83,8 +73,6 @@
         model_select.innerHTML = optionHTML;
        });
       });
-     
-     
      }
      </script>
 
